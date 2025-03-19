@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Countdown 🎉</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉 Surprise Unlocks In 🎉</h1>
+    <div id="countdown"></div>
+
+    <script>
+        // Set the target date (Replace with her actual birthday date & time)
+        const birthdayDate = new Date("March 25, 2025 00:00:00").getTime();
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const timeLeft = birthdayDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML =
+                    `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s ⏳`;
+            } else {
+                clearInterval(countdownInterval);
+                window.location.href = "index.html"; // Redirect to the main website
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
